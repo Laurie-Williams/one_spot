@@ -39,6 +39,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'newrelic_rpm'
 # Use Figaro to manage Environment variables
 gem 'figaro'
+# Track app exceptions with Sentry.io
+gem "sentry-raven"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
