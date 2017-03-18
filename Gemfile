@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Track app with New Relic
 gem 'newrelic_rpm'
+# Use Figaro to manage Environment variables
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
