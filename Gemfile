@@ -63,6 +63,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   # Use Capybara for acceptance testing
   gem 'capybara'
+  # Use Poltergeist Webdriver for js dependent feature tests
+  gem 'poltergeist'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
