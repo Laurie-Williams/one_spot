@@ -41,3 +41,5 @@ exclude_paths:
 - test/
 - vendor/
 - .idea/
+- client/node_modules/
+- app/assets/webpack/
