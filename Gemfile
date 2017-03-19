@@ -57,7 +57,10 @@ group :development do
 end
 
 group :development, :test do
+  # Use rspec for testing framework
   gem 'rspec-rails', '~> 3.5'
+  # Use Capybara for acceptance testing
+  gem 'capybara'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
