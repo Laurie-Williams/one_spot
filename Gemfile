@@ -41,6 +41,8 @@ gem 'newrelic_rpm'
 gem 'figaro'
 # Track app exceptions with Sentry.io
 gem "sentry-raven"
+# Use react_on_rails to manage React.js integration
+gem 'react_on_rails', '~> 6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
