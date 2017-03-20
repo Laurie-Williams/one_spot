@@ -1,3 +1,4 @@
+# Use for finding fingerprints: ~$ codeclimate analyze -f json
 ---
 engines:
   brakeman:
@@ -8,6 +9,8 @@ engines:
     enabled: true
   duplication:
     enabled: true
+    exclude_fingerprints:
+      - 58615c6fdff570de9ee174210712ab69
     config:
       languages:
       - ruby
@@ -16,6 +19,8 @@ engines:
       - php
   eslint:
     enabled: true
+    exclude_fingerprints:
+      - 81f1db8cc66fe7d124f1ecde5904b4e5
   fixme:
     enabled: true
   rubocop:
@@ -43,3 +48,4 @@ exclude_paths:
 - .idea/
 - client/node_modules/
 - app/assets/webpack/
+- coverage/
