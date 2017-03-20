@@ -1,0 +1,7 @@
+<%= form_for @account do |f|%>
+    Name:
+    <%= f.text_field :name %>
+    Subdomain:
+    <%= f.text_field :subdomain %>
+    <%= f.submit 'Submit' %>
+<% end %>

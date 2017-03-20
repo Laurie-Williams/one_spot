@@ -61,11 +61,20 @@ end
 group :development, :test do
   # Use rspec for testing framework
   gem 'rspec-rails', '~> 3.5'
+  # Include helpers for controller tests
+  gem 'rails-controller-testing'
+  # Use Should Matchers gem to help with model specs
+  gem 'shoulda-matchers', '~> 3.1'
   # Use Capybara for acceptance testing
   gem 'capybara'
   # Use Poltergeist Webdriver for js dependent feature tests
   gem 'poltergeist'
+  # Use Launchy to open pages in feature specs
+  gem 'launchy'
 end
+
+# Test for Code Coverage with SimpleCov
+gem 'simplecov', :require => false, :group => :test
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
