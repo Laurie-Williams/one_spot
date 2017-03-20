@@ -14,7 +14,7 @@ class Account < ApplicationRecord
     super(columns)
   end
 
-  def self.save
+  def save
     super
   end
 end
