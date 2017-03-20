@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   # -------- NEW --------
 
   def new
-    @account = Account.new
+    @account = Account.i_new
   end
 
   # -------- CREATE --------
@@ -25,7 +25,7 @@ class AccountsController < ApplicationController
   # -------- SHOW --------
 
   def show
-    @account = Account.find(params[:id])
+    @account = Account.i_find(params[:id])
   end
 
   private

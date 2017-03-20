@@ -5,16 +5,17 @@ class Account < ApplicationRecord
 
   # Explicitly declare Model interface for use in business logic
   # Intent to decouple business logic from ActiveRecord
+  # Prefix all interface methods with 'i_'
 
-  def self.find(id)
-    super(id)
+  def self.i_find(id)
+    self.find(id)
   end
 
-  def self.new(columns={})
-    super(columns)
+  def self.i_new(columns={})
+    self.new(columns)
   end
 
-  def save
-    super
+  def i_save
+    self.save
   end
 end

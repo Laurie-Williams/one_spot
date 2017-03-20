@@ -4,8 +4,8 @@ class CreateAccount
   end
 
   def execute
-    account = Account.new(@properties)
-    if account.save
+    account = Account.i_new(@properties)
+    if account.i_save
       @listener.create_success(account)
     else
       @listener.create_failure(account)
