@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
 
   def create_success(account)
     flash[:success] = 'Account created'
-    redirect_to account_url(account.id, subdomain: account.subdomain)
+    redirect_to owned_account_url(account.id, subdomain: account.subdomain)
   end
 
   def create_failure(account)

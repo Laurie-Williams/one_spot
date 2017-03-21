@@ -9,10 +9,10 @@ feature "CaseCreations" do
     visit new_account_path
     create_account(name: 'Example Name A', subdomain: 'aaa')
 
-    visit new_case_url(subdomain: 'aaa')
+    visit new_owned_case_url(subdomain: 'aaa')
     create_case(name: 'Case A1')
 
-    visit cases_url(subdomain: 'bbb')
+    visit owned_cases_url(subdomain: 'bbb')
     expect(page).to have_content('Case A1')
   end
 
@@ -23,13 +23,13 @@ feature "CaseCreations" do
     visit new_account_path
     create_account(name: 'Example Name B', subdomain: 'bbb')
 
-    visit new_case_url(subdomain: 'aaa')
+    visit new_owned_case_url(subdomain: 'aaa')
     create_case(name: 'Case A1')
 
-    visit new_case_url(subdomain: 'bbb')
+    visit new_owned_case_url(subdomain: 'bbb')
     create_case(name: 'Case B1')
 
-    visit cases_url(subdomain: 'aaa')
+    visit owned_cases_url(subdomain: 'aaa')
     expect(page).to have_content('Case A1')
     expect(page).not_to have_content('Case B1')
   end

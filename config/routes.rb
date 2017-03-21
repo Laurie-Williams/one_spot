@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :accounts, only: [:new, :create]
 
   constraints(SubdomainRequired) do
-    scope module: "owned" do
+    scope module: :owned, as: :owned do
       resources :accounts, only: [:show]
       resources :cases, only: [:new, :create, :index]
     end

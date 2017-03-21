@@ -21,7 +21,7 @@ module Owned
 
     def create_success
       flash[:success] = 'Case was created'
-      redirect_to cases_url
+      redirect_to owned_cases_url
     end
 
     def create_failure(kase)
@@ -33,7 +33,7 @@ module Owned
     private
 
     def case_params
-      params.require(:case).permit(:name)
+      params.require(:owned_case).permit(:name)
     end
   end
 end
