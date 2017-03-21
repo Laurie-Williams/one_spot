@@ -12,7 +12,7 @@ feature "CaseCreations" do
     visit new_owned_case_url(subdomain: 'aaa')
     create_case(name: 'Case A1')
 
-    visit owned_cases_url(subdomain: 'bbb')
+    visit owned_cases_url(subdomain: 'aaa')
     expect(page).to have_content('Case A1')
   end
 
