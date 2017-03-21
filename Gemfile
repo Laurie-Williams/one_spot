@@ -43,6 +43,8 @@ gem 'figaro'
 gem "sentry-raven"
 # Use react_on_rails to manage React.js integration
 gem 'react_on_rails', '~> 6'
+# Use acts_as_tenant to handle multi-tenancy scoping for Models
+gem 'acts_as_tenant', '~> 0.3.9'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

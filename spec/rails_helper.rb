@@ -9,6 +9,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+Capybara.app_host = "http://lvh.me"
 Capybara.javascript_driver = :poltergeist
 
 Shoulda::Matchers.configure do |config|

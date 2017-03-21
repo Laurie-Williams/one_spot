@@ -1,14 +1,14 @@
-class CreateAccount
-  def self.call(properties:{}, listener:, model:Account)
+class CreateCase
+  def self.call(properties:{}, listener:, model:Case)
     self.new(properties, listener, model).execute
   end
 
   def execute
-    account = @model.i_new(@properties)
-    if account.i_save
-      @listener.create_success(account)
+    kase = @model.i_new(@properties)
+    if kase.i_save
+      @listener.create_success
     else
-      @listener.create_failure(account)
+      @listener.create_failure(kase)
     end
   end
 

@@ -6,7 +6,7 @@ describe AccountsController do
   describe "GET #new" do
 
     before do
-      allow(Account).to receive(:new).and_return(account)
+      allow(Account).to receive(:i_new).and_return(account)
     end
 
     it "responds with success status code" do
@@ -21,13 +21,12 @@ describe AccountsController do
   end
 
   describe "POST #create" do
-    let(:permitted_params) {ActionController::Parameters.new({name: 'Example Name', subdomain: 'examplesub'}).permit(:name, :subdomain)}
-
     describe "creation successful" do
+      let(:permitted_params) { ActionController::Parameters.new({name: 'Example Name', subdomain: 'examplesub'}).permit(:name, :subdomain)}
 
       before do
         allow(CreateAccount).to receive(:call).with(properties: permitted_params, listener: controller) { controller.create_success(account) }
-        post :create, params: {account: {name: 'Example Name', subdomain: 'examplesub'}}
+        post :create, params: {account: permitted_params.to_h}
       end
 
       it "sends properties and listener to CreateAccount service" do
@@ -44,10 +43,11 @@ describe AccountsController do
     end
 
     describe "creation unsuccessful" do
+      let(:permitted_params) { ActionController::Parameters.new({name: '', subdomain: ''}).permit(:name, :subdomain)}
 
       before do
         allow(CreateAccount).to receive(:call).with(properties: permitted_params, listener: controller) { controller.create_failure(account) }
-        post :create, params: {account: {name: 'Example Name', subdomain: 'examplesub'}}
+        post :create, params: {account: permitted_params.to_h}
       end
 
       it "sets error flash" do
@@ -67,7 +67,7 @@ describe AccountsController do
   describe "GET #show" do
 
     it "sets correct @account object" do
-      allow(Account).to receive(:find).with('1').and_return(account)
+      allow(Account).to receive(:i_find).with('1').and_return(account)
       get :show, params: {id: 1}
 
       expect(assigns(:account)).to eq(account)

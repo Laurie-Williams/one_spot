@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_raven_context
+  set_current_tenant_by_subdomain :account, :subdomain
 
   private
 

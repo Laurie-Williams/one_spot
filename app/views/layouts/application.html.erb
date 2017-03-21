@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    SUBDOMAIN = <%= current_tenant.subdomain rescue 'NONE' %>
     <%= render partial: 'layouts/flash' %>
     <%= yield %>
   </body>

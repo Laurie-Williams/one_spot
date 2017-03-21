@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   root 'hello_world#index'
   resources :accounts, only: [:new, :create, :show]
+  resources :cases, only: [:new, :create, :index]
 end
