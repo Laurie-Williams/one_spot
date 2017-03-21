@@ -70,4 +70,19 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Set up feature test domain and port so that subdomains can be used easily
+  config.before type: :feature do
+    domain = "lvh.me"
+    port = 55555
+
+    # Config Capybara test server
+    Capybara.app_host = "http://#{domain}"
+    Capybara.server_port = port
+    Capybara.always_include_port = true
+
+    # Config Rails routing helpers
+    default_url_options[:host] = domain
+    default_url_options[:port] = port
+  end
 end
