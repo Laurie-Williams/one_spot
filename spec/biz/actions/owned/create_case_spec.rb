@@ -1,4 +1,4 @@
-require_relative '../../../app/biz/actions/create_case'
+require_relative '../../../../app/biz/actions/owned/create_case'
 
 module Owned
   RSpec.describe CreateCase do

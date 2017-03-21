@@ -31,7 +31,7 @@ module Owned
 
         before do
           allow(CreateCase).to receive(:call).with(properties: permitted_params, listener: controller) { controller.create_success}
-          post :create, params: {case: permitted_params.to_h}
+          post :create, params: {owned_case: permitted_params.to_h}
         end
 
         it "sends properties and listener to CreateCase action service" do
@@ -52,7 +52,7 @@ module Owned
 
         before do
           allow(CreateCase).to receive(:call).with(properties: permitted_params, listener: controller) { controller.create_failure(kase) }
-          post :create, params: {case: permitted_params.to_h}
+          post :create, params: {owned_case: permitted_params.to_h}
         end
 
         it "sets error flash" do
