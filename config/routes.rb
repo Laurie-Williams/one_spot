@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'hello_world#index'
-  resources :accounts, only: [:new, :create, :show]
-  resources :cases, only: [:new, :create, :index]
+  resources :accounts, only: [:new, :create]
+
+  constraints(SubdomainRequired) do
+    resources :accounts, only: [:show]
+    resources :cases, only: [:new, :create, :index]
+  end
 end
