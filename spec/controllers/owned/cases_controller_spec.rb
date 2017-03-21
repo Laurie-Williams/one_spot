@@ -1,8 +1,11 @@
 require 'rails_helper'
+require 'shortcuts/tenant_shortcut'
+include TenantShortcut
 
 module Owned
   describe CasesController do
     let(:kase) { double('case') }
+    before { stub_tenant double('tenant') }
 
     describe "GET #new" do
 

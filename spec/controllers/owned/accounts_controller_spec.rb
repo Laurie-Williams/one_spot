@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Owned::AccountsController do
   let(:account) {double('account', id: 1, subdomain: 'examplesub')}
+  before { stub_tenant double('tenant') }
 
   describe "GET #show" do
 
