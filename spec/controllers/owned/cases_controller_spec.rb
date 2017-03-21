@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CasesController do
+describe Owned::CasesController do
   let(:kase) { double('case') }
 
   describe "GET #new" do

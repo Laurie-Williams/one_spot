@@ -22,12 +22,6 @@ class AccountsController < ApplicationController
     render :new
   end
 
-  # -------- SHOW --------
-
-  def show
-    @account = Account.i_find(params[:id])
-  end
-
   private
 
   def account_params
