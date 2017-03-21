@@ -1,7 +1,6 @@
 module Owned
-  class Case < ApplicationRecord
+  class Case < Owned::BaseRecord
 
-    acts_as_tenant(:account)
     validates :name, presence: true
 
     # Explicitly declare Model interface for use in business logic
