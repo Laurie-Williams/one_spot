@@ -11,6 +11,7 @@
   <body>
     SUBDOMAIN = <%= current_tenant.subdomain rescue 'NONE' %>
     <%= render partial: 'layouts/flash' %>
+    <%= render partial: 'layouts/user' %>
     <%= yield %>
   </body>
 </html>
