@@ -87,4 +87,9 @@ RSpec.configure do |config|
     default_url_options[:host] = domain
     default_url_options[:port] = port
   end
+
+  # Include devise helpers in controller and view specs
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  # config.include Warden::Test::Helpers, type: :feature
 end

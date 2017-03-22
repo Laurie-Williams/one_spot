@@ -1,11 +1,16 @@
 require 'rails_helper'
 require 'shortcuts/tenant_shortcut'
+require 'shortcuts/authentication_shortcut'
 include TenantShortcut
+include AuthenticationShortcut
 
 module Owned
   describe CasesController do
     let(:kase) { double('case') }
-    before { stub_tenant double('tenant') }
+    before do
+      stub_tenant double('tenant')
+      stub_user_authentication is_authenticated: true
+    end
 
     describe "GET #new" do
 

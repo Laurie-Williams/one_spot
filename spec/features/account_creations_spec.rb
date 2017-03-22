@@ -1,8 +1,15 @@
 require 'rails_helper'
 require 'shortcuts/account_shortcut'
+require 'shortcuts/authentication_shortcut'
 include AccountShortcut
+include AuthenticationShortcut
 
 feature "AccountCreations" do
+
+  before do
+    create_and_login_as(email: 'test@example.com', password: 'password')
+  end
+
   scenario "User creates a valid account" do
     visit new_account_path
     create_account(name: 'Example Name', subdomain: 'examplesub')

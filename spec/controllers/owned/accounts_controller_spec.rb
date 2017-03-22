@@ -1,8 +1,13 @@
 require 'rails_helper'
+require 'shortcuts/authentication_shortcut'
+include AuthenticationShortcut
 
 describe Owned::AccountsController do
   let(:account) {double('account', id: 1, subdomain: 'examplesub')}
-  before { stub_tenant double('tenant') }
+  before do
+    stub_tenant double('tenant')
+    stub_user_authentication is_authenticated: true
+  end
 
   describe "GET #show" do
 

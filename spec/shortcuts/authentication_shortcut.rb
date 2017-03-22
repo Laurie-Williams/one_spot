@@ -1,4 +1,9 @@
+include Warden::Test::Helpers
+
 module AuthenticationShortcut
+
+  # ----- Feature Specs -----
+
   def new_registration(email:, password:)
     click_link 'register'
 
@@ -17,5 +22,16 @@ module AuthenticationShortcut
     fill_in "user_email", with: email
     fill_in "user_password", with: password
     click_button 'Log in'
+  end
+
+  def create_and_login_as(email:, password:)
+    user = User.create(email: email, password: password, confirmed_at: Time.now)
+    login_as user
+  end
+
+  # ----- Controller Specs -----
+
+  def stub_user_authentication(is_authenticated:)
+    allow(controller).to receive(:authenticate_user!).and_return(is_authenticated)
   end
 end
