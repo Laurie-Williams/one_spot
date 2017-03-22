@@ -9,6 +9,8 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+require 'capybara/email/rspec'
+
 Capybara.app_host = "http://lvh.me"
 Capybara.javascript_driver = :poltergeist
 

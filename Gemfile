@@ -60,6 +60,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # View sent emails with letter_opener_web
+  gem 'letter_opener_web'
 end
 
 group :development, :test do
@@ -71,6 +73,8 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   # Use Capybara for acceptance testing
   gem 'capybara'
+  #  user capybara-email for testing emails in feature specs
+  gem 'capybara-email', '~> 2.5'
   # Use Poltergeist Webdriver for js dependent feature tests
   gem 'poltergeist'
   # Use Launchy to open pages in feature specs
