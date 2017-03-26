@@ -31,7 +31,8 @@ module AuthenticationShortcut
 
   # ----- Controller Specs -----
 
-  def stub_user_authentication(is_authenticated:)
+  def stub_user_authentication(is_authenticated:, current_user:)
     allow(controller).to receive(:authenticate_user!).and_return(is_authenticated)
+    allow(controller).to receive(:current_user).and_return(current_user)
   end
 end

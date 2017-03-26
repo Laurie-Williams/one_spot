@@ -4,9 +4,11 @@ include AuthenticationShortcut
 
 describe Owned::AccountsController do
   let(:account) {double('account', id: 1, subdomain: 'examplesub')}
+  let(:user) {double('user')}
   before do
     stub_tenant double('tenant')
-    stub_user_authentication is_authenticated: true
+    stub_user_authentication is_authenticated: true, current_user: user
+    stub_user_authorization current_user: user, is_authorized: true
   end
 
   describe "GET #show" do

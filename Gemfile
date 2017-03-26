@@ -69,6 +69,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   # Include helpers for controller tests
   gem 'rails-controller-testing'
+  # Include mock_model helper for mocking Models in specs
+  gem 'rspec-activemodel-mocks'
   # Use Should Matchers gem to help with model specs
   gem 'shoulda-matchers', '~> 3.1'
   # Use Capybara for acceptance testing

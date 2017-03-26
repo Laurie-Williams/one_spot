@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  set_current_tenant_through_filter
   # -------- NEW --------
 
   def new
@@ -8,7 +9,7 @@ class AccountsController < ApplicationController
   # -------- CREATE --------
 
   def create
-    CreateAccount.call(properties: account_params, listener: self)
+      CreateAccount.call(owner: current_user, properties: account_params, listener: self)
   end
 
   def create_success(account)
@@ -20,6 +21,10 @@ class AccountsController < ApplicationController
     flash.now[:error] = 'Account could not be created'
     @account = account
     render :new
+  end
+
+  def set_current_tenant!(account)
+    ActsAsTenant.current_tenant = account
   end
 
   private

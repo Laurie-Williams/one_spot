@@ -1,6 +1,8 @@
 require 'rails_helper'
 require 'shortcuts/tenant_shortcut'
+require 'shortcuts/authentication_shortcut'
 include TenantShortcut
+include AuthenticationShortcut
 
 describe Owned::BaseController do
   controller do
@@ -15,15 +17,34 @@ describe Owned::BaseController do
   describe "GET #index" do
 
     context "Logged in" do
-      before { sign_in user }
+      before { stub_user_authentication(is_authenticated: true, current_user: user) }
 
       context "with current tenant" do
         before { stub_tenant double('tenant') }
 
-        it "renders successful response" do
-          get :index
-          expect(response).to have_http_status(:success)
+        context "and has role permission" do
+          before { allow(user).to receive(:has_any_role?).and_return(true) }
+
+          it "renders successful response" do
+            get :index
+            expect(response).to have_http_status(:success)
+          end
         end
+
+        context "and does not have role permission" do
+          before { allow(user).to receive(:has_any_role?).and_return(false) }
+
+          it "redirects to root" do
+            get :index
+            expect(response).to redirect_to root_url(subdomain: nil)
+          end
+
+          it "sets error flash" do
+            get :index
+            expect(flash[:error]).not_to be_nil
+          end
+        end
+
       end
 
       context "without current tenant" do

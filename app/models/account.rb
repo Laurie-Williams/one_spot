@@ -18,4 +18,12 @@ class Account < ApplicationRecord
   def i_save
     self.save
   end
+
+  def self.roles_all
+    [role_owner]
+  end
+
+  def self.role_owner
+    'owner'
+  end
 end

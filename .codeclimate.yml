@@ -11,6 +11,14 @@ engines:
     enabled: true
     exclude_fingerprints:
       - 58615c6fdff570de9ee174210712ab69
+      - 53310fbf5f5ce0a47f3edb56a865afb2 # Title of Spec, not real code duplication
+      - 1a63019e936984c5c0fe6d715195383e # Title of Spec, not real code duplication
+      - bfe4f7d828021e5f3493d3644e5c1e1d # For clarity in Spec, not real code duplication
+      - 377af8c05087dd752360407057670ee8 # For clarity in Spec, not real code duplication
+      - b7f6da32e07b3acd27173addc4b2b062 # Duplication across Controller Specs, not real code duplication
+      - 1a63019e936984c5c0fe6d715195383e # Duplication across Controller Specs, not real code duplication
+      - f99ec4a233e3a7ccccca24e98d872d26 # Duplication across Controller Specs, not real code duplication
+      - 2d4d286071eee1064de04a57e858d6a9 # Duplication across Controller Specs, not real code duplication
     config:
       languages:
       - ruby

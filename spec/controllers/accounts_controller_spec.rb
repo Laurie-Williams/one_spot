@@ -1,7 +1,10 @@
 require 'rails_helper'
+require 'shortcuts/authentication_shortcut'
+include AuthenticationShortcut
 
 describe AccountsController do
   let(:account) {double('account', id: 1, subdomain: 'examplesub')}
+  let(:user) { double('user') }
 
   describe "GET #new" do
 
@@ -21,16 +24,20 @@ describe AccountsController do
   end
 
   describe "POST #create" do
+    before do
+      stub_user_authentication is_authenticated: true, current_user: user
+    end
+
     describe "creation successful" do
       let(:permitted_params) { ActionController::Parameters.new({name: 'Example Name', subdomain: 'examplesub'}).permit(:name, :subdomain)}
 
       before do
-        allow(CreateAccount).to receive(:call).with(properties: permitted_params, listener: controller) { controller.create_success(account) }
+        allow(CreateAccount).to receive(:call).with(owner: user, properties: permitted_params, listener: controller) { controller.create_success(account) }
         post :create, params: {account: permitted_params.to_h}
       end
 
       it "sends properties and listener to CreateAccount service" do
-        expect(CreateAccount).to have_received(:call).with(properties: permitted_params, listener: controller) { controller.create_success(account) }
+        expect(CreateAccount).to have_received(:call).with(owner: user, properties: permitted_params, listener: controller) { controller.create_success(account) }
       end
 
       it "sets success flash" do
@@ -46,7 +53,7 @@ describe AccountsController do
       let(:permitted_params) { ActionController::Parameters.new({name: '', subdomain: ''}).permit(:name, :subdomain)}
 
       before do
-        allow(CreateAccount).to receive(:call).with(properties: permitted_params, listener: controller) { controller.create_failure(account) }
+        allow(CreateAccount).to receive(:call).with(owner: user, properties: permitted_params, listener: controller) { controller.create_failure(account) }
         post :create, params: {account: permitted_params.to_h}
       end
 

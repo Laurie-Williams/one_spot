@@ -7,6 +7,7 @@ include AuthenticationShortcut
 feature "AccountCreations" do
 
   before do
+
     create_and_login_as(email: 'test@example.com', password: 'password')
   end
 
