@@ -2,7 +2,7 @@ module Owned
   class BaseController < ApplicationController
     before_action :authenticate_user!
     before_action :require_current_tenant
-    before_action :authorize_user!
+    before_action :authorize_for_tenant!
 
     private
 
@@ -12,8 +12,12 @@ module Owned
       end
     end
 
-    def authorize_user!(resource_model=Account)
-      unless current_user.has_any_role?(resource_model.roles_all, current_tenant)
+    def authorize_for_tenant!
+      check_authorization!(OwnedPolicy, :permit?, current_tenant)
+    end
+
+    def check_authorization!(policy_class, method, *args)
+      unless policy_class.new(current_user).send(method, *args)
         block_access!
       end
     end
