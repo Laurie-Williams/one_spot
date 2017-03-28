@@ -1,3 +1,4 @@
+require 'spec_helper'
 require_relative '../../../app/biz/actions/create_account'
 require_relative '../../../app/adapters/db_transaction'
 require_relative '../../../spec/shortcuts/transaction_shortcut'
