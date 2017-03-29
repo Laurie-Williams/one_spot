@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
     #Raven.user_context(id: session[:current_user_id]) # or anything else in session
     Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
+
+  def check_authorization!(policy_class, method, *args)
+    unless policy_class.new(current_user).send(method, *args)
+      block_access!
+    end
+  end
 end

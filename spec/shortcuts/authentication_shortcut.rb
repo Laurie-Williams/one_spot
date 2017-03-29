@@ -35,4 +35,8 @@ module AuthenticationShortcut
     allow(controller).to receive(:authenticate_user!).and_return(is_authenticated)
     allow(controller).to receive(:current_user).and_return(current_user)
   end
+
+  def is_authenticated
+    expect(described_class.ancestors.include? Authenticated).to eq(true)
+  end
 end

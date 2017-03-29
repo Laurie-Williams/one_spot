@@ -1,6 +1,8 @@
 module Owned
   class CasesController < ApplicationController
-    include OwnerRestricted
+    include Authenticated
+    include Tenanted
+    include Authorized
 
     # -------- INDEX --------
 

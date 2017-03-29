@@ -19,7 +19,9 @@ module Owned
       stub_user_authorization current_user: user, is_authorized: true
     end
 
-    specify { is_owner_restricted }
+    specify { is_authenticated }
+    specify { is_authorized }
+    specify { is_tenanted }
 
     describe "GET #new" do
 

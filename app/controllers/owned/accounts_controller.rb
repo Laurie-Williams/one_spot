@@ -1,6 +1,9 @@
 module Owned
   class AccountsController < ApplicationController
-    include OwnerRestricted
+    include Authenticated
+    include Tenanted
+    include Authorized
+
     # -------- SHOW --------
 
     def show
