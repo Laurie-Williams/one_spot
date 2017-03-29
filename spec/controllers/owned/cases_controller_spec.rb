@@ -2,9 +2,11 @@ require 'rails_helper'
 require 'shortcuts/tenant_shortcut'
 require 'shortcuts/authentication_shortcut'
 require 'shortcuts/authorization_shortcut'
+require 'shortcuts/owner_restricted_shortcut'
 include TenantShortcut
 include AuthenticationShortcut
 include AuthorizationShortcut
+include OwnerRestrictedShortcut
 
 module Owned
   describe CasesController do
@@ -16,6 +18,8 @@ module Owned
       stub_user_authentication is_authenticated: true, current_user: user
       stub_user_authorization current_user: user, is_authorized: true
     end
+
+    specify { is_owner_restricted }
 
     describe "GET #new" do
 

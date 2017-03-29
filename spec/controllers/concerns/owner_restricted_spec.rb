@@ -4,8 +4,10 @@ require 'shortcuts/authentication_shortcut'
 include TenantShortcut
 include AuthenticationShortcut
 
-describe Owned::BaseController do
-  controller do
+describe OwnerRestricted do
+  controller(ApplicationController) do
+    include OwnerRestricted
+
     def index
       head 200
     end

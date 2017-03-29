@@ -1,5 +1,6 @@
 module Owned
-  class AccountsController < Owned::BaseController
+  class AccountsController < ApplicationController
+    include OwnerRestricted
     # -------- SHOW --------
 
     def show

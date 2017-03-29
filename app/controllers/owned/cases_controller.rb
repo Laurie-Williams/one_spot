@@ -1,5 +1,6 @@
 module Owned
-  class CasesController < Owned::BaseController
+  class CasesController < ApplicationController
+    include OwnerRestricted
 
     # -------- INDEX --------
 
