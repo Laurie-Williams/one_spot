@@ -10,6 +10,8 @@
 
   <body>
     SUBDOMAIN = <%= current_tenant.subdomain rescue 'NONE' %>
+    <br/>
+    SESSION = <%= debug session.to_json %>
     <%= render partial: 'layouts/flash' %>
     <%= render partial: 'layouts/user' %>
     <%= yield %>
