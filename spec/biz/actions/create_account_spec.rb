@@ -44,16 +44,4 @@ RSpec.describe CreateAccount do
       expect(listener).to have_received(:create_failure)
     end
   end
-
-  describe "unsuccessful role creation" do
-    before do
-      allow(account).to receive(:i_save).and_return(true)
-      allow(user).to receive(:set_role!).and_return(false)
-    end
-
-    it "calls #create_failed on the listener with correct account instance" do
-      CreateAccount.call(owner: user, properties: params, listener: listener, model: account_class)
-      expect(listener).to have_received(:create_failure)
-    end
-  end
 end

@@ -15,7 +15,7 @@ describe Authorized do
     end
   end
 
-  let(:user) { User.create(email: 'test@example.com', password: 'password', confirmed_at: Time.now)}
+  let(:user) { Owned::User.create(email: 'test@example.com', password: 'password', confirmed_at: Time.now)}
   let(:tenant) { double('tenant') }
 
   describe "GET #index" do

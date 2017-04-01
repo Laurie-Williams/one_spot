@@ -7,9 +7,9 @@ module AuthenticationShortcut
   def new_registration(email:, password:)
     click_link 'register'
 
-    fill_in "user_email", with: email
-    fill_in "user_password", with: password
-    fill_in "user_password_confirmation", with: password
+    fill_in "owned_user_email", with: email
+    fill_in "owned_user_password", with: password
+    fill_in "owned_user_password_confirmation", with: password
     click_button "Sign up"
   end
 
@@ -19,13 +19,16 @@ module AuthenticationShortcut
   end
 
   def custom_sign_in(email:, password:)
-    fill_in "user_email", with: email
-    fill_in "user_password", with: password
+    fill_in "owned_user_email", with: email
+    fill_in "owned_user_password", with: password
     click_button 'Log in'
   end
 
-  def create_and_login_as(email:, password:)
-    user = User.create(email: email, password: password, confirmed_at: Time.now)
+  def create_and_login_as(email:, password:, tenant_sub:, role:)
+    account = Account.i_where(subdomain: tenant_sub).first
+    user = Owned::User.i_new(email: email, password: password, confirmed_at: Time.now, account: account)
+    user.save
+    role = Owned::Role.create(user: user, resource: account, name: role, account: account)
     login_as user
   end
 

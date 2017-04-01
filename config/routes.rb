@@ -3,11 +3,10 @@ Rails.application.routes.draw do
 
   root 'hello_world#index'
   resources :accounts, only: [:new, :create]
-  devise_for :users,
-             controllers: { registrations: 'my_devise/registrations', confirmations: 'my_devise/confirmations' }
 
   constraints(SubdomainRequired) do
     scope module: :owned, as: :owned do
+      devise_for :users, class_name: 'Owned::User', module: 'owned/my_devise'
       resources :accounts, only: [:show]
       resources :cases, only: [:new, :create, :index]
     end

@@ -12,12 +12,12 @@ module Owned
     # Intent to decouple business logic from ActiveRecord
     # Prefix all interface methods with 'i_'
 
-    def self.i_where(user:, resource:, role_names:)
-      where(user: user, resource: resource, name: role_names)
+    def self.i_where(args)
+      where(args)
     end
 
-    def self.i_find(user:, resource:, name:)
-      i_where(user: user, resource: resource, role_names: name).first
+    def self.i_find(args)
+      i_where(args).first
     end
 
     def self.i_new(columns={})

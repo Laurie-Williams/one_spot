@@ -1,11 +1,11 @@
 require 'rails_helper'
 require 'shortcuts/tenant_shortcut'
-require 'shortcuts/authentication_shortcut'
-require 'shortcuts/authorization_shortcut'
-require 'shortcuts/owner_restricted_shortcut'
 include TenantShortcut
+require 'shortcuts/authentication_shortcut'
 include AuthenticationShortcut
+require 'shortcuts/authorization_shortcut'
 include AuthorizationShortcut
+require 'shortcuts/owner_restricted_shortcut'
 include OwnerRestrictedShortcut
 
 describe Owned::AccountsController do

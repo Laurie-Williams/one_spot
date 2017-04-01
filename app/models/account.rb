@@ -15,6 +15,10 @@ class Account < ApplicationRecord
     self.new(columns)
   end
 
+  def self.i_where(columns={})
+    self.where(columns)
+  end
+
   def i_save
     self.save
   end

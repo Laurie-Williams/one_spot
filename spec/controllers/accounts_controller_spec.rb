@@ -45,7 +45,7 @@ describe AccountsController do
       end
 
       it "redirects to correct account url" do
-        expect(response).to redirect_to(owned_account_url(account.id, subdomain: account.subdomain))
+        expect(response).to redirect_to(new_owned_user_registration_url(subdomain: account.subdomain))
       end
     end
 

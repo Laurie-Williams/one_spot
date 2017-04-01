@@ -15,4 +15,12 @@ class ApplicationController < ActionController::Base
       block_access!
     end
   end
+
+  def authenticate_user!
+    authenticate_owned_user!
+  end
+
+  def current_user
+    current_owned_user
+  end
 end

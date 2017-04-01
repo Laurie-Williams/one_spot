@@ -11,7 +11,7 @@ describe Authenticated do
     end
   end
 
-  let(:user) { User.create(email: 'test@example.com', password: 'password', confirmed_at: Time.now)}
+  let(:user) { Owned::User.create(email: 'test@example.com', password: 'password', confirmed_at: Time.now)}
 
   describe "GET #index" do
 
@@ -28,7 +28,7 @@ describe Authenticated do
 
       it "redirects to sign in" do
         get :index
-        expect(response).to redirect_to(new_user_session_url)
+        expect(response).to redirect_to(new_owned_user_session_url)
       end
     end
   end
