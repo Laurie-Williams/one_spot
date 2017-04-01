@@ -1,5 +1,5 @@
 module Owned
-  class MyDevise::RegistrationsController < Devise::RegistrationsController
+  class MyDevise::RegistrationsController < DeviseInvitable::RegistrationsController
     include Tenanted
     before_action :check_if_first!, only: [:new, :create]
 
@@ -16,8 +16,8 @@ module Owned
 
     private
 
-    def check_if_first!(policy=RegistrationPolicy.new)
-      unless policy.permit?
+    def check_if_first!(policy=RegistrationPolicy)
+      unless policy.new.permit?
         redirect_to root_url, subdomain: nil, flash: {error: "This account already has an owner"}
       end
     end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   constraints(SubdomainRequired) do
     scope module: :owned, as: :owned do
-      devise_for :users, class_name: 'Owned::User', module: 'owned/my_devise'
+      devise_for :users, class_name: 'Owned::User', module: 'owned/my_devise', controllers: { registrations: 'owned/my_devise/registrations' }
       resources :accounts, only: [:show]
       resources :cases, only: [:new, :create, :index]
     end

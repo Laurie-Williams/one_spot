@@ -71,7 +71,10 @@ module Owned
         before { allow(User).to receive(:i_count).and_return(1) }
 
         it "blocks with redirect to root with no subdomain"
+
         it "sets an error flash"
+
+        it "does not create a user"
       end
     end
   end

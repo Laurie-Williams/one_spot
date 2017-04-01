@@ -24,10 +24,18 @@ class Account < ApplicationRecord
   end
 
   def self.roles_all
-    [role_owner]
+    [role_owner, role_member, role_admin]
   end
 
   def self.role_owner
     'owner'
+  end
+
+  def self.role_member
+    'member'
+  end
+
+  def self.role_admin
+    'admin'
   end
 end
