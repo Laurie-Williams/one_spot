@@ -47,6 +47,8 @@ gem 'react_on_rails', '~> 6'
 gem 'acts_as_tenant', '~> 0.3.9'
 # Use devise gem for User authentication
 gem 'devise', '~> 4.2'
+# User device_invitable for User invitations
+gem 'devise_invitable', '~> 1.7.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
