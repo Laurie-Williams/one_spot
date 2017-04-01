@@ -4,7 +4,7 @@ module Owned
     # :confirmable, :lockable, :timeoutable and :omniauthable
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable,
-           :confirmable, :lockable
+           :confirmable, :lockable, :invitable
 
     # Explicitly declare Model interface for use in business logic
     # Intent to decouple business logic from ActiveRecord
