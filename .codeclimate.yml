@@ -57,3 +57,5 @@ exclude_paths:
 - client/node_modules/
 - app/assets/webpack/
 - coverage/
+- node_modules/
+- spec/
